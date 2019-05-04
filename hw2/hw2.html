@@ -13608,7 +13608,7 @@ We can count our sequences using "Stars and bars" method. We have 2 bars and k s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[101]:</div>
+<div class="prompt input_prompt">In&nbsp;[193]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
@@ -13637,7 +13637,7 @@ We can count our sequences using "Stars and bars" method. We have 2 bars and k s
 <span class="nb">print</span><span class="p">(</span><span class="n">y_mnist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y_mnist</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">my_train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
@@ -13667,7 +13667,7 @@ We can count our sequences using "Stars and bars" method. We have 2 bars and k s
     
     <span class="k">return</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span>
 
-<span class="n">x_train_mnist</span><span class="p">,</span> <span class="n">y_train_mnist</span><span class="p">,</span> <span class="n">x_test_mnist</span><span class="p">,</span> <span class="n">y_test_mnist</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x_mnist</span><span class="p">,</span> <span class="n">y_mnist</span><span class="p">)</span>
+<span class="n">x_train_mnist</span><span class="p">,</span> <span class="n">y_train_mnist</span><span class="p">,</span> <span class="n">x_test_mnist</span><span class="p">,</span> <span class="n">y_test_mnist</span> <span class="o">=</span> <span class="n">my_train_test_split</span><span class="p">(</span><span class="n">x_mnist</span><span class="p">,</span> <span class="n">y_mnist</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train size for mnist: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_train_mnist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test size for mnist: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_test_mnist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
@@ -13757,7 +13757,7 @@ Test size for mnist: 1996
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="prompt input_prompt">In&nbsp;[209]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -13777,7 +13777,7 @@ Test size for mnist: 1996
     <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">notmnist_dir</span><span class="p">,</span> <span class="n">letter</span><span class="p">))</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">tx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
-    <span class="n">tx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+    <span class="n">tx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
     <span class="n">ty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">label</span><span class="p">]</span> <span class="o">*</span> <span class="n">tx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     
     <span class="n">n</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -13798,6 +13798,11 @@ Test size for mnist: 1996
         <span class="n">x_train_notmnist</span><span class="p">,</span> <span class="n">y_train_notmnist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">x_train_notmnist</span><span class="p">,</span> <span class="n">tx</span><span class="p">[</span><span class="n">train_inds</span><span class="p">])),</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">y_train_notmnist</span><span class="p">,</span> <span class="n">ty</span><span class="p">[</span><span class="n">train_inds</span><span class="p">]))</span>
         <span class="n">x_test_notmnist</span><span class="p">,</span> <span class="n">y_test_notmnist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">x_test_notmnist</span><span class="p">,</span> <span class="n">tx</span><span class="p">[</span><span class="n">test_inds</span><span class="p">])),</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">y_test_notmnist</span><span class="p">,</span> <span class="n">ty</span><span class="p">[</span><span class="n">test_inds</span><span class="p">]))</span>
 
+<span class="n">x_train_notmnist</span> <span class="o">=</span> <span class="n">x_train_notmnist</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">x_test_notmnist</span> <span class="o">=</span> <span class="n">x_test_notmnist</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">x_train_notmnist</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x_train_notmnist</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">x_test_notmnist</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x_test_notmnist</span> <span class="o">-</span> <span class="mi">1</span>
+
 <span class="n">x_train_notmnist</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">x_train_notmnist</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x_train_notmnist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">img_shape</span><span class="p">,</span> <span class="n">img_shape</span><span class="p">)</span>
 <span class="n">x_test_notmnist</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">x_test_notmnist</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x_test_notmnist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">img_shape</span><span class="p">,</span> <span class="n">img_shape</span><span class="p">)</span>
 <span class="n">y_train_notmnist</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">y_train_notmnist</span><span class="p">)</span>
@@ -13805,7 +13810,9 @@ Test size for mnist: 1996
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;notMNIST size: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset_size</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train size for notMNIST: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_train_notmnist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_train_notmnist</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test size for notMNIST: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_test_notmnist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_test_notmnist</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13822,9 +13829,119 @@ Test size for mnist: 1996
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>notMNIST size: 100000
-Train size for notMNIST: 80000
-Test size for notMNIST: 20000
+<pre>notMNIST size: 18724
+Train size for notMNIST: 14984
+tensor([[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          ...,
+          [-0.6863,  0.9294,  1.0000,  ...,  1.0000,  0.8353, -0.8118],
+          [-0.0039,  1.0000,  0.9843,  ...,  0.9843,  1.0000, -0.1765],
+          [ 0.6471,  1.0000,  0.9922,  ...,  0.9843,  1.0000,  0.4824]]],
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          ...,
+          [-0.8118,  0.8431,  1.0000,  ...,  1.0000,  0.5843, -0.9843],
+          [-0.2078,  1.0000,  0.9843,  ...,  1.0000,  0.9451, -0.6157],
+          [ 0.1529,  1.0000,  0.9765,  ...,  0.9922,  1.0000, -0.1529]]],
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          ...,
+          [ 0.7020,  1.0000,  0.9765,  ...,  0.9765,  1.0000,  0.6784],
+          [-0.2627,  1.0000,  1.0000,  ...,  1.0000,  1.0000, -0.1843],
+          [-1.0000, -0.2941,  0.6157,  ...,  0.6000, -0.3020, -1.0000]]],
+
+
+        ...,
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ...,  0.9922, -0.1529, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ...,  1.0000,  0.8039, -0.7255],
+          [-1.0000, -1.0000, -1.0000,  ...,  0.9686,  1.0000, -0.4510],
+          ...,
+          [-0.5529,  0.8667,  1.0000,  ..., -0.9765, -1.0000, -1.0000],
+          [-1.0000, -0.6941,  0.2471,  ..., -1.0000, -1.0000, -1.0000],
+          [-0.9922, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ...,  0.2392, -0.1765, -0.6157],
+          [-1.0000, -1.0000, -1.0000,  ...,  1.0000,  1.0000,  0.3804],
+          [-1.0000, -1.0000, -1.0000,  ...,  0.9686,  0.9843, -0.3647],
+          ...,
+          [ 0.0667,  1.0000,  0.9765,  ..., -1.0000, -1.0000, -1.0000],
+          [-0.9608,  0.1529,  0.9843,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -0.5294,  ..., -1.0000, -1.0000, -1.0000]]],
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ...,  0.4275,  0.4902, -0.1529],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -0.9843, -0.9843, -0.9922],
+          ...,
+          [ 0.6941,  1.0000,  0.9765,  ..., -1.0000, -1.0000, -1.0000],
+          [-0.7176,  0.4980,  1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -0.9529, -0.4510,  ..., -1.0000, -1.0000, -1.0000]]]])
+Test size for notMNIST: 3740
+tensor([[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          ...,
+          [-0.2157,  0.9137,  1.0000,  ...,  1.0000,  0.8980, -0.2157],
+          [ 1.0000,  1.0000,  0.9922,  ...,  0.9922,  1.0000,  1.0000],
+          [ 0.9922,  0.9922,  1.0000,  ...,  1.0000,  0.9922,  0.9922]]],
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          ...,
+          [-0.8118,  0.7412,  1.0000,  ...,  1.0000,  0.7647, -0.8745],
+          [-1.0000, -0.5686,  0.6941,  ..., -0.0431, -0.5765, -1.0000],
+          [-0.9843, -1.0000, -0.8980,  ..., -1.0000, -1.0000, -1.0000]]],
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          ...,
+          [-0.9608,  0.6000,  1.0000,  ...,  1.0000,  0.6471, -0.9216],
+          [-0.2784,  1.0000,  0.9137,  ...,  0.9059,  1.0000, -0.2392],
+          [ 0.5059,  1.0000,  0.2314,  ...,  0.2314,  1.0000,  0.5216]]],
+
+
+        ...,
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ..., -0.3020,  0.0588, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ...,  0.7647,  1.0000, -0.4039],
+          [-1.0000, -1.0000, -1.0000,  ...,  1.0000,  1.0000, -0.0039],
+          ...,
+          [ 0.8275,  1.0000,  0.4275,  ..., -0.9922, -1.0000, -1.0000],
+          [ 0.3804,  0.9137,  0.3333,  ..., -1.0000, -1.0000, -1.0000],
+          [-0.7412, -0.5137, -0.4745,  ..., -1.0000, -1.0000, -1.0000]]],
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -0.9922, -0.9922],
+          [-1.0000, -1.0000, -1.0000,  ..., -0.9686, -1.0000, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ...,  0.8353,  0.5137, -0.5294],
+          ...,
+          [-0.2392,  0.9294,  1.0000,  ..., -0.9922, -1.0000, -1.0000],
+          [-0.4353, -0.1373, -0.2078,  ..., -1.0000, -0.9922, -1.0000],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],
+
+
+        [[[-1.0000, -1.0000, -1.0000,  ...,  0.9843,  1.0000,  0.3725],
+          [-1.0000, -1.0000, -1.0000,  ...,  0.2314,  0.1451, -0.6235],
+          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+          ...,
+          [-1.0000, -1.0000, -0.9529,  ..., -1.0000, -1.0000, -1.0000],
+          [-0.7569,  0.2235,  0.7961,  ..., -1.0000, -1.0000, -1.0000],
+          [-0.9216,  0.4431,  0.9451,  ..., -1.0000, -1.0000, -1.0000]]]])
 </pre>
 </div>
 </div>
@@ -13842,7 +13959,7 @@ Test size for notMNIST: 20000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[167]:</div>
+<div class="prompt input_prompt">In&nbsp;[194]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -13865,7 +13982,7 @@ Test size for notMNIST: 20000
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>      
         <span class="n">optimizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
         
-        <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>      
+        <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">my_train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>      
         
         <span class="n">opt_loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
         <span class="n">opt_params</span> <span class="o">=</span> <span class="p">[]</span>
@@ -14130,28 +14247,58 @@ TEST: 0.938376753507014
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="7.">7.<a class="anchor-link" href="#7.">&#182;</a></h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[212]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">NetMnistTanh</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">(),</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;_______________ TANH FOR NOT_MNIST: _______________&quot;</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_notmnist</span><span class="p">,</span> <span class="n">y_train_notmnist</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;_______________ RESULTS: _______________&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TRAIN: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">y_train_notmnist</span> <span class="o">==</span> <span class="n">net</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train_notmnist</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">x_train_notmnist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TEST: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">y_test_notmnist</span> <span class="o">==</span> <span class="n">net</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_notmnist</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">x_test_notmnist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>_______________ TANH FOR NOT_MNIST: _______________
+EPOCH=0, LOSS: TRAIN=0.002316649304702878, VALIDATION=0.39670854806900024
+EPOCH=1, LOSS: TRAIN=0.001584523473866284, VALIDATION=0.3246292173862457
+EPOCH=2, LOSS: TRAIN=0.0013290587812662125, VALIDATION=0.31627488136291504
+EPOCH=3, LOSS: TRAIN=0.0003428790078032762, VALIDATION=0.309885174036026
+EPOCH=4, LOSS: TRAIN=0.0016319530550390482, VALIDATION=0.3055249750614166
+EPOCH=5, LOSS: TRAIN=0.0003037137212231755, VALIDATION=0.31917697191238403
+EPOCH=6, LOSS: TRAIN=0.001478120917454362, VALIDATION=0.29924675822257996
+EPOCH=7, LOSS: TRAIN=0.0001874812296591699, VALIDATION=0.315386563539505
+EPOCH=8, LOSS: TRAIN=0.00017794096493162215, VALIDATION=0.32771405577659607
+EPOCH=9, LOSS: TRAIN=0.0006653618183918297, VALIDATION=0.3324151337146759
+_______________ RESULTS: _______________
+TRAIN: 0.9634276561665777
+TEST: 0.9061497326203208
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
